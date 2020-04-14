@@ -11,7 +11,7 @@ Where is the malicious content? Decode, deobfuscate, and analyze suspicious code
 Perform quick triage on suspicious PDF attachments. 
 
 ### hancitor_decode.py
-Deobfuscate hancitor C2 traffic.
+Decode hancitor C2 traffic and extract IOCs.
 
 ### YARA
 A compilation of useful YARA rules.
