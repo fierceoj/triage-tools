@@ -10,7 +10,7 @@ Where is the malicious content? Decode, deobfuscate, and analyze suspicious code
 ### pdftriage
 Perform quick triage on suspicious PDF attachments. 
 
-### hancitor_decode.py
+### hancitor_c2
 Decode hancitor C2 traffic and extract IOCs.
 
 ### YARA
