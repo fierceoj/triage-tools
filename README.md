@@ -1,17 +1,17 @@
 # triage-tools
 Blue Team utilities for analyzing suspicious traffic and files. 
 
-### -ioc_rep
+- ioc_rep
 Check the reputation of an IP, URL, or file hash.
 
-### -mal_where
+- mal_where
 Decode, deobfuscate, and analyze suspicious code/traffic/data. 
 
-### -pdftriage
+- pdftriage
 Triage suspicious PDF attachments. 
 
-### -hancitor_c2
+- hancitor_c2
 Decode hancitor C2 traffic and extract IOCs.
 
-### -YARA
+- YARA
 A compilation of useful YARA rules.
