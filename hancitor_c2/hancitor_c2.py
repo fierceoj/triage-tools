@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #tool to decode hancitor post-infection c2 traffic 
-#extracts url iocs
+#extracts additional c2 iocs
 
 import base64
 import sys
