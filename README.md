@@ -1,5 +1,5 @@
 # triage-tools
-Blue Team utilities for analyzing suspicious traffic and files. 
+Blue Team tools for analyzing suspicious traffic and files. 
 
 ### ioc_rep
 Check the reputation of an IP, URL, or file hash.
