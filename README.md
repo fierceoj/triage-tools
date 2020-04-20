@@ -1,7 +1,7 @@
 # triage-tools
 Blue Team tools for analyzing suspicious traffic and files. 
 
-### ioc_rep
+### ioccheck
 Check the reputation of an IP, URL, or file hash.
 
 ### malwhere
