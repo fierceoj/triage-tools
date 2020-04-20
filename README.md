@@ -5,7 +5,7 @@ Blue Team tools for analyzing suspicious traffic and files.
 Check the reputation of an IP, URL, or file hash.
 
 ### malwhere
-Where is there malicious content? Decode, deobfuscate, and analyze suspicious code/traffic/data. 
+Where is the malicious content? Decode, deobfuscate, and analyze suspicious code/traffic/data. 
 
 ### pdftriage
 Triage suspicious PDF attachments. 
