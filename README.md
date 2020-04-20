@@ -12,6 +12,3 @@ Triage suspicious PDF attachments.
 
 ### hancitor_c2
 Decode hancitor C2 traffic and extract IOCs.
-
-### YARA
-A compilation of useful YARA rules.
