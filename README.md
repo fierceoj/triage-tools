@@ -4,7 +4,7 @@ Blue Team tools for analyzing suspicious traffic and files.
 ### ioc_rep
 Check the reputation of an IP, URL, or file hash.
 
-### mal_where
+### malwhere
 Decode, deobfuscate, and analyze suspicious code/traffic/data. 
 
 ### pdftriage
