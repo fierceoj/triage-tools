@@ -1,5 +1,5 @@
 # triage-tools
-Blue Team SOC tools for triaging suspicious traffic and files. 
+Blue Team tools for SOC triage. 
 
 ### ioccheck
 Check the reputation of an IP, URL, or file hash.
