@@ -177,7 +177,7 @@ def main():
 		encoded_data = args.email_header
 		decoded_data = header_decode(encoded_data)
 	else:
-		sys.exit('For help: python3 mal_where.py -h')
+		sys.exit('For help: python3 malwhere.py -h')
 
 	#desanitize or sanitize
 	#extract URLs and IPs
