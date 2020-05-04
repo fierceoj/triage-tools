@@ -5,9 +5,9 @@ Decode, decompress, and deobfuscate malicious payloads and indicators. Analyze m
 To see the program help message: </br>
 ```python3 malwhere.py -h``` </br>
 or </br>
-```python3 malwhere.py --help```
+```python3 malwhere.py --help``` </br>
 
-Output of the help message: </br>
+Output of the help message explains each option's usage: </br>
 ```
 usage: malwhere.py [-h] [--check CHECK_ENC] [--base64 B64_STR]
                    [--base64_utf8 B64_UTF8_STR] [--base64_utf16 B64_UTF16_STR]
@@ -52,4 +52,5 @@ optional arguments:
   --ioc IOCS, -i IOCS   extract URLs and IPs
   ```
 
-### Demo
+### Demos
+
