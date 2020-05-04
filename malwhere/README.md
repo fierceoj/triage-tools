@@ -54,17 +54,16 @@ optional arguments:
 
 ### Demos
 Below is an example of using the `--check` option to detect and decode multiple layers of encoding.
-[!alt text] ()
 
 Consider the following suspicious PowerShell example. 
-[!alt text] ()
+
 The `-b16` option successfully decodes the encoded PowerShell command.
-[!alt text] ()
+
 Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option.
-[!alt text]()
+
 
 The `--xor` and `--xor_bf` options prompt for input rather than taking the encoded data as a command line argument. 
-[!alt text] ()
+
 
 The `--gunzip` option takes a file in the same directory as input.
-[!alt text] ()
+
