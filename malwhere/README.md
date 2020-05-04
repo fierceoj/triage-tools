@@ -8,7 +8,8 @@ or </br>
 ```python3 malwhere.py --help```
 
 Output of the help message: </br>
-```usage: malwhere.py [-h] [--check CHECK_ENC] [--base64 B64_STR]
+```
+usage: malwhere.py [-h] [--check CHECK_ENC] [--base64 B64_STR]
                    [--base64_utf8 B64_UTF8_STR] [--base64_utf16 B64_UTF16_STR]
                    [--base64_gunzip B64_GZIP_STR] [--hex HEX_STR]
                    [--hex_gunzip HEX_GZIP_STR] [--url URL_STR] [--bin BIN_STR]
