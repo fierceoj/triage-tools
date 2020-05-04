@@ -1,4 +1,4 @@
-# Analyze Encoded, Compressed, or Obfuscated Content
+# Analyze Encoded, Compressed, or Obfuscated Data
 Decode, decompress, and deobfuscate malicious payloads and indicators. Analyze multi-layer gibberish to find concealed malicious content and IOCs. Obtain sanitized or unsanitized IOCs from the results. 
 
 ### Usage
