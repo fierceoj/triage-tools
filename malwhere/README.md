@@ -55,13 +55,14 @@ optional arguments:
 **NOTE:** The `--ioc` option can take either a string or a file (.csv or .txt) as input. The `--gunzip` option takes a gzipped file as input. 
 
 ### Demos
-Below is an example that uses the `--check` option to detect and decode multiple layers of encoding.
+1) Below is an example that uses the `--check` option to detect and decode multiple layers of encoding.
 ![alt text](../screenshots/malwhere_multilayer.png)
 
-Consider the following suspicious PowerShell example. 
+2) Consider the following suspicious PowerShell example. 
 ![alt text](../screenshots/encoded_powershell_example.png)
 
 The payload is UTF-16 and base64 encoded, so the `-b16` option successfully decodes the encoded PowerShell command.
+![alt text](../screenshots/malwhere_b16.png)
 
 Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option. See the example below. 
 
