@@ -5,6 +5,6 @@ Decode, decompress, and deobfuscate malicious payloads and indicators. Analyze m
 To see the program help message:
 ```python3 malwhere.py -h``` </br>
 or </br>
-```python3 malwhere.py --help
+```python3 malwhere.py --help```
 
 ### Demo
