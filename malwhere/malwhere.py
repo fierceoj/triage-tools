@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
-#simple tool to analyze encoded, obfuscated, or compressed payloads and IOCs
+#simple tool to analyze encoded, compressed, or obfuscated payloads and indicators
 #find concealed malicious content and IOCs
-#obtain results in sanitized or desanitized format
+#obtain IOCs in sanitized or desanitized format
 
-#TO DO: add binary decoding
 
 import re
 import sys
 import argparse
 import gzip
 import base64
+import binascii
 from urllib.parse import unquote
 from email.header import decode_header, make_header
 
@@ -20,13 +20,15 @@ def check_encoding(encoded_data):
 	decoded_data = ''
 
 	#base64 pattern 
-	b64_pattern = re.search(r'^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$', encoded_data) #re.MULTILINE)
+	b64_pattern = re.search(r'^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$', encoded_data) 
+	#binary pattern
+	bin_pattern = all(ch in '01' for ch in encoded_data.replace(' ', ''))
 	#hex pattern 
 	hex_pattern = all(ch in '0123456789abcdefABCDEF' for ch in encoded_data.replace(' ', ''))
 	#url(percent) encoding pattern 
 	url_enc_pattern = re.search(r'%[\w\d]{2}', encoded_data)
 	#MIME encoded-word header pattern 
-	mime_enc_wd_pattern = re.search(r'(\=\?.*\?(B|Q)\?.*\?\=)+', encoded_data)#, re.MULTILINE)
+	mime_enc_wd_pattern = re.search(r'(\=\?.*\?(B|Q)\?.*\?\=)+', encoded_data)
 
 	#check if base64 encoded
 	if (b64_pattern):	
@@ -40,18 +42,27 @@ def check_encoding(encoded_data):
 				decoded_data = b64_gunzip(encoded_data)
 
 			else:
-				#check if base64 utf-8 or utf-16
+				#check if it can base64 utf-16 / utf-8 decoded
+				try:
+					decoded_data = b64_utf16(encoded_data)
+					print('[*] Match: base64 utf-16 encoding')
+				except:
+					pass
 				try:
 					decoded_data = b64_utf8(encoded_data)
 					print('[*] Match: base64 utf-8 encoding')
 				except:
-					try:
-						decoded_data = b64_utf16(encoded_data)
-						print('[*] Match: base64 utf-16 encoding')
-					except:
-						pass
+					pass
 		except:
 			pass	
+
+	#check if binary string:
+	elif (bin_pattern):
+		try:
+			decoded_data = bin_decode(encoded_data)
+			print('\n[*] Match: binary encoding')
+		except:
+			pass
 
 	#check if hex encoded
 	elif (hex_pattern):
@@ -157,7 +168,7 @@ def check_encoding(encoded_data):
 #decode a non-Unicode base64-encoded string
 def b64_decode(encoded_data):
 	try:
-		decoded_data = base64.b64decode(encoded_data).decode('ascii')
+		decoded_data = str(base64.b64decode(encoded_data).decode())
 		return decoded_data
 	except:
 		sys.exit('Decoding error.')
@@ -212,9 +223,18 @@ def url_decode(encoded_data):
 	except:
 		sys.exit('Decoding error.')
 
-#decode binary encoding to ascii
+#decode binary encoding (bits) to ascii
 def bin_decode(encoded_data):
-	pass
+	try:
+		if not encoded_data.startswith('0b'):
+			encoded_data = ('0b', encoded_data)
+			encoded_data = ''.join(encoded_data)
+		encoded_data = encoded_data.replace(' ', '')
+		n = int(encoded_data, 2)
+		decoded_data = binascii.unhexlify('%x' % n).decode('ascii')
+		return decoded_data
+	except:
+		sys.exit('Decoding error.')
 
 #decode rot13 
 def rot13_decode(encoded_data):
@@ -303,21 +323,22 @@ def print_ips(decoded_data, sanitized=True):
 def main():
 	decoded_data = ''
 
+	#this is a python3 script
 	if sys.version.startswith('2'):
 		sys.exit('You must use python3 to run this script.')
 
-	main_parser = argparse.ArgumentParser(description='Decode, decompress, and deobfuscate malicious payloads and IOCs.')
+	main_parser = argparse.ArgumentParser(description='Decode, decompress, and deobfuscate malicious payloads and indicators.')
 
-	main_parser.add_argument('--check', '-c', dest='check_enc', action='store', help='check the encoding method')
-	main_parser.add_argument('--base64', '-b', dest='b64_str', action='store', help='decode base64 (non-Unicode)')
+	main_parser.add_argument('--check', '-c', dest='check_enc', action='store', help='detect encoding/compression/obfuscation methods')
+	main_parser.add_argument('--base64', '-b64', dest='b64_str', action='store', help='decode base64 (non-Unicode)')
 	main_parser.add_argument('--base64_utf8', '-b8', dest='b64_utf8_str', action='store', help='decode base64 (UTF-8)')
 	main_parser.add_argument('--base64_utf16', '-b16', dest='b64_utf16_str', action='store', help='decode base64 (UTF-16)')
 	main_parser.add_argument('--base64_gunzip', '-bg', dest='b64_gzip_str', action='store', help='decode base64-encoded gzip compression')
 	main_parser.add_argument('--hex', '-hx', dest='hex_str', action='store', help='decode hex to ascii')
 	main_parser.add_argument('--hex_gunzip', '-hg', dest='hex_gzip_str', action='store', help='decode hex-encoded gzip compression')
 	main_parser.add_argument('--url', '-u', dest='url_str', action='store', help='decode URL(percent) encoding')
-	#add args for bin_decode()
-	main_parser.add_argument('--rot13', '-r13', dest='rot13_str', action='store', help='decode rot13')
+	main_parser.add_argument('--bin', '-b', dest='bin_str', action='store', help='decode binary to ascii')
+	main_parser.add_argument('--rot13', '-r', dest='rot13_str', action='store', help='decode rot13')
 	main_parser.add_argument('--xor', '-x', dest='xorkey', action='store', help='decode XOR with a given key')
 	main_parser.add_argument('--xor_bf', '-xbf', dest='xor_bf', action='store_const', const='xor_bf', help='decode XOR by brute force')
 	main_parser.add_argument('--header', '-hdr', dest='email_header', action='store', help='decode MIME encoded-word headers')
@@ -328,7 +349,7 @@ def main():
 
 	args = main_parser.parse_args()
 
-	#get decoding arguments
+	#check args and do stuff based on args
 	if args.check_enc:
 		encoded_data = args.check_enc
 		decoded_data = check_encoding(encoded_data)
@@ -363,6 +384,9 @@ def main():
 	elif args.url_str:
 		encoded_data = args.url_str
 		decoded_data = url_decode(encoded_data)
+	elif args.bin_str:
+		encoded_data = args.bin_str
+		decoded_data = bin_decode(encoded_data)
 	elif args.rot13_str:
 		encoded_data = args.rot13_str
 		decoded_data = rot13_decode(encoded_data)
@@ -389,8 +413,7 @@ def main():
 	else:
 		sys.exit('Help: python3 malwhere.py -h')
 
-	#print results
-	#if decoded_data: 
+	#print results 
 	if not args.iocs:
 		print("\n=========================================================")
 		print('********************     DECODED     ********************')
