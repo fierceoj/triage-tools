@@ -59,10 +59,9 @@ Below is an example of using the `--check` option to detect and decode multiple 
 
 Consider the following suspicious PowerShell example. 
 
-The `-b16` option successfully decodes the encoded PowerShell command.
+The payload is UTF-16 and base64 encoded, so the `-b16` option successfully decodes the encoded PowerShell command.
 
-Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option.
+Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option. See the example below. 
 
 
 The `--xor` and `--xor_bf` options prompt for input rather than taking the encoded data as a command line argument. 
-
