@@ -48,6 +48,7 @@ optional arguments:
   --gunzip GZIPPED_FILE, -gz GZIPPED_FILE
                         decompress gzipped file
   --desan, -d           show desanitized results
-  --ioc IOCS, -i IOCS   extract URLs and IPs```
+  --ioc IOCS, -i IOCS   extract URLs and IPs
+  ```
 
 ### Demo
