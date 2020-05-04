@@ -1,5 +1,5 @@
 # Decode Hancitor Post-Infection Traffic
-Decode Hancitor C2 traffic streams and extract additional C2 URL IOCs. This script base64 decodes the C2 response and XORs the result with hex key 7a. 
+Decode Hancitor C2 traffic streams and extract C2 URL IOCs. This script base64 decodes the C2 response and XORs the result with hex key 7a. 
 
 ### Usage
 ```python3 hancitor_c2.py <encoded_traffic>``` <br/>
