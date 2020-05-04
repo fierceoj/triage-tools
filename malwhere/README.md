@@ -51,6 +51,8 @@ optional arguments:
   --desan, -d           show desanitized results
   --ioc IOCS, -i IOCS   extract URLs and IPs
   ```
+  
+**NOTE:** The `--ioc` option can take either a string or a file (.csv or .txt) as input. The `--gunzip` option takes a gzipped file as input. 
 
 ### Demos
 Below is an example of using the `--check` option to detect and decode multiple layers of encoding.
@@ -63,7 +65,4 @@ Another common way to obfuscate malicious PowerShell commands is to gzip and the
 
 
 The `--xor` and `--xor_bf` options prompt for input rather than taking the encoded data as a command line argument. 
-
-
-The `--gunzip` option takes a file in the same directory as input.
 
