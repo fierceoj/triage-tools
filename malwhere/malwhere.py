@@ -97,7 +97,7 @@ def check_encoding(encoded_data):
 
 	else:
 		#check if rot13 encoded
-		#letter frequency orders are based on Cornell study on Englisth language letter frequencies
+		#letter frequency order is based on Cornell study on Englisth language letter frequencies
 		#http://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
 		#descending frequency order = etaoinsrhdlucmfywgpbvkxqjz
 		total_letters = len(re.findall(r'[a-z]', encoded_data.lower()))
