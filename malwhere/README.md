@@ -56,7 +56,7 @@ optional arguments:
 
 ### Demos
 Below is an example of using the `--check` option to detect and decode multiple layers of encoding.
-[!alt text](../screenshots/malwhere_multilayer.png)
+![alt text](../screenshots/malwhere_multilayer.png)
 
 Consider the following suspicious PowerShell example. 
 
