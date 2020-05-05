@@ -59,6 +59,7 @@ Below is an example that uses the `--check` option to detect and decode multiple
 ![alt text](../screenshots/malwhere_multilayer.png)
 
 Consider the following suspicious PowerShell example. 
+
 ![alt text](../screenshots/powershell_encoded_command.png)
 
 The payload is UTF-16 and base64 encoded, so the `-b16` option successfully decodes the encoded PowerShell command.
