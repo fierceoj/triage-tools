@@ -58,7 +58,7 @@ optional arguments:
 Below is an example that uses the `--check` option to detect and decode multiple layers of encoding.
 ![alt text](../screenshots/malwhere_multilayer.png)
 
-Consider the following suspicious PowerShell example. 
+Consider the following malicious PowerShell example presented [here](https://redcanary.com/blog/investigating-powershell-attacks/). 
 
 ![alt text](../screenshots/powershell_encoded_command.png)
 
