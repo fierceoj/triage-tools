@@ -84,7 +84,7 @@ The final base64 string contains a bytes object, which represents the final shel
 
 ![alt text](../screenshots/powershell_multistage_shellcode.png)
 
-You could then convert the bytes to hex using a simple line of code in the Python interpreter to obtain the final shellcode for post-triage investigation. 
+You could then convert the bytes to hex using a simple line of code in the normal Python interpreter to obtain the final shellcode for post-triage investigation. 
 
 ![alt text](../screenshots/shellcode_tohex.png)
 
