@@ -52,7 +52,10 @@ optional arguments:
   --ioc IOCS, -i IOCS   extract URLs and IPs
   ```
   
-**NOTE:** The `--ioc` option can take either a string or a file (.csv or .txt) as input. The `--gunzip` option takes a gzipped file as input. 
+**NOTES:** The `--ioc` option can take either a string or a file (.csv or .txt) as input. </br>
+The `--gunzip` option takes a gzipped file as input. </br>
+The `--base64` option does not extract URLs/IPs since its primary objective is to return a bytes object. If the decoded base64 is in fact a string and not a bytes object, use the `-b8` or `-b16` options.
+
 
 ### Demos
 Below is an example that uses the `--check` option to detect and decode multiple layers of encoding.
