@@ -72,5 +72,13 @@ Another common way to obfuscate malicious PowerShell commands is to gzip and the
 
 ![alt text](../screenshots/powershell_encoded_command2.png)
 
+The following output was produced using the `--check` option. The `-b8` option also would have worked. 
+
+The output contains a gzipped-compressed base64-encoded string. Using the `-bg` option against this string produces the following output. The `--check` option would have worked as well.
+
+The final base64 string contains a bytes object, which represents the final shellcode. You could then convert the bytes to hex if desired to obtain the final shellcode for further investigation, moving beyond the triage stage. The "FC E8 82 00 00 00" bytes in the beginning indicate a likely Metasploit payload. 
+
+
+
 
 The `--xor` and `--xor_bf` options prompt for input rather than taking the encoded data as a command line argument. 
