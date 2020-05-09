@@ -70,7 +70,7 @@ The payload is UTF-16 and base64 encoded, so the `-b16` option successfully deco
 
 Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option. Consider the following encoded PowerShell payload. 
 
-![alt text](../screenshots/powershell_encoded_commands2.png)
+![alt text](../screenshots/powershell_encoded_command2.png)
 
 
 The `--xor` and `--xor_bf` options prompt for input rather than taking the encoded data as a command line argument. 
