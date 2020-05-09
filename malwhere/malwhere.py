@@ -20,7 +20,7 @@ def check_encoding(encoded_data):
 	decoded_data = ''
 
 	#base64 pattern 
-	b64_pattern = re.search(r'^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$', encoded_data) 
+	b64_pattern = re.search(r'^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$', encoded_data)
 	#binary pattern
 	bin_pattern = all(ch in '01' for ch in encoded_data.replace(' ', ''))
 	#hex pattern 
@@ -168,7 +168,7 @@ def check_encoding(encoded_data):
 #decode a non-Unicode base64-encoded string
 def b64_decode(encoded_data):
 	try:
-		decoded_data = str(base64.b64decode(encoded_data).decode())
+		decoded_data = base64.b64decode(encoded_data)
 		return decoded_data
 	except:
 		sys.exit('Decoding error.')
@@ -419,13 +419,14 @@ def main():
 		print('********************     DECODED     ********************')
 		print("=========================================================\n")
 		print(decoded_data)
-	if args.desanitize == 'desanitize':
-		print_urls(decoded_data, sanitized=False)
-		print_ips(decoded_data, sanitized=False)
-	else:
-		decoded_data = sanitize(decoded_data)
-		print_urls(decoded_data, sanitized=True)
-		print_ips(decoded_data, sanitized=True)
+	if not args.b64_str:
+		if args.desanitize == 'desanitize':
+			print_urls(decoded_data, sanitized=False)
+			print_ips(decoded_data, sanitized=False)
+		else:
+			decoded_data = sanitize(decoded_data)
+			print_urls(decoded_data, sanitized=True)
+			print_ips(decoded_data, sanitized=True)
 
 
 if __name__ == "__main__":
