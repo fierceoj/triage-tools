@@ -68,7 +68,7 @@ Consider the following malicious PowerShell example presented [here](https://red
 The payload is UTF-16 and base64 encoded, so the `-b16` option successfully decodes the encoded PowerShell command.
 ![alt text](../screenshots/malwhere_b16.png)
 
-Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option. Consider the following encoded PowerShell payload. 
+Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option. Consider the following encoded PowerShell payload found [here](https://pastebin.com/u6xKPNTh). 
 
 ![alt text](../screenshots/powershell_encoded_command2.png)
 
