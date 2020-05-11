@@ -54,11 +54,12 @@ optional arguments:
   
 **NOTES:** The `--ioc` option can take either a string or a file (.csv or .txt) as input. </br>
 The `--gunzip` option takes a gzipped file as input. </br>
-The `--base64` option does not extract URLs/IPs since its primary objective is to return a bytes object. If the decoded base64 is in fact a string and not a bytes object, use the `-b8` or `-b16` options.
+The `--base64` option does not extract URLs/IPs since its primary objective is to return a bytes object. If the decoded base64 is in fact a string and not a bytes object, use the `-b8`, `-b16` or `--check` options.
 
 
 ### Demos
 Below is an example that uses the `--check` option to detect and decode multiple layers of encoding.
+
 ![alt text](../screenshots/malwhere_multilayer.png)
 
 Consider the following malicious PowerShell example presented [here](https://redcanary.com/blog/investigating-powershell-attacks/). 
@@ -66,6 +67,7 @@ Consider the following malicious PowerShell example presented [here](https://red
 ![alt text](../screenshots/powershell_encoded_command.png)
 
 The payload is UTF-16 and base64 encoded, so the `-b16` option successfully decodes the encoded PowerShell command.
+
 ![alt text](../screenshots/malwhere_b16.png)
 
 Another common way to obfuscate malicious PowerShell commands is to gzip and then base64 encode them. For such scenarios, use the `-bg` option. Consider the following encoded PowerShell payload found [here](https://pastebin.com/u6xKPNTh). 
@@ -88,5 +90,10 @@ You could then convert the bytes to hex using a simple line of code in the norma
 
 ![alt text](../screenshots/shellcode_tohex.png)
 
-
 The `--xor` and `--xor_bf` options prompt for input rather than taking the encoded data as a command line argument. See the examples below.
+
+XOR brute force example:
+![alt text](../screenshots/xor_bruteforce_example.png)
+
+XOR with known key:
+![alt text](../screenshots/xor_key_example.png)
