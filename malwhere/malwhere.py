@@ -268,8 +268,10 @@ def xor_brute(encoded_data):
 		if check_more_keys == 1:
 			low_key = high_key
 			high_key += 15
-		else:
+		elif check_more_keys == 2:
 			sys.exit(0)
+		else:
+			print('\nError: Please select 1 or 2\n')
 
 #decode MIME encoded-word headers
 def header_decode(encoded_data):
