@@ -259,7 +259,7 @@ def xor_brute(encoded_data):
 	high_key = 16
 	while high_key < 257:
 		for k in range (low_key, high_key):
-			decoded_data = xor_with_key(k, encoded_data)
+			decoded_data = xor_key(k, encoded_data)
 			print(f'KEY: {k} : ' + str(decoded_data))
 		print('\nMORE KEYS?')
 		print('1\tY')
