@@ -92,8 +92,8 @@ You could then convert the bytes to hex using a simple line of code in the norma
 
 The `--xor` and `--xor_bf` options prompt for input rather than taking the encoded data as a command line argument. See the examples below.
 
-XOR brute force example:
+XOR brute force example: </br>
 ![alt text](../screenshots/xor_bruteforce_example.png)
 
-XOR with known key:
+XOR with known key: </br>
 ![alt text](../screenshots/xor_key_example.png)
