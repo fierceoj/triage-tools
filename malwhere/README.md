@@ -78,7 +78,7 @@ The following output was produced using the `--check` option. The `-b8` option a
 
 ![alt text](../screenshots/powershell_multistage_part1.png)
 
-The output contains a gzipped-compressed base64-encoded string. Using the `-bg` option against this string produces the following output. The `--check` option would have worked as well.
+The output contains a gzipped-compressed base64-encoded string. Using the `-bg` option against the gzip-compressed base64-encoded string produces the result shown below. The `--check` option would have worked as well.
 
 ![alt text](../screenshots/powershell_multistage_part2.png)
 
