@@ -9,6 +9,3 @@ Check the reputation of an IP, URL, or file hash. (Coming soon.)
 
 ### malwhere
 Where is the malicious content? Decode, deobfuscate, and analyze suspicious code/traffic/data. 
-
-### pdftriage
-Triage suspicious PDF attachments. (Coming soon.)
