@@ -29,7 +29,7 @@ def print_iocs(sanitized_decoded_traffic):
 def main():
 
 	if len(sys.argv) is not 2:
-		sys.exit("Usage: python3 hancitor_decode.py <encoded_traffic>")
+		sys.exit("Usage: python3 hancitor_c2.py <encoded_traffic>")
 
 	else:
 		encoded_traffic = str(sys.argv[1])
