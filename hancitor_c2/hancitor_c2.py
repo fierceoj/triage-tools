@@ -7,25 +7,28 @@ import base64
 import sys
 import re
 
-
+#base64 decode and then XOR the result with 0x7a
+#call sanitize() on the decoded data in order to get safe IOCs
 def hancitor_decode(encoded_traffic):
 	decoded_b64 = base64.b64decode(encoded_traffic)
 	decoded_traffic = ''.join([chr(i^0x7a) for i in decoded_b64])
 	sanitized_decoded_traffic = sanitize(decoded_traffic)
 	return sanitized_decoded_traffic
 
+#sanitize the URL IOCs
 def sanitize(decoded_traffic):
 	sanitized = re.sub(r'http:\/\/', 'hxxp://', decoded_traffic, flags=re.IGNORECASE)
 	sanitized = re.sub(r'https:\/\/', 'hxxps://', sanitized, flags=re.IGNORECASE)
 	sanitized = re.sub(r'\.', '[.]', sanitized, flags=re.IGNORECASE)
 	return sanitized
 
+#print the URL IOCs
 def print_iocs(sanitized_decoded_traffic):
 	iocs = re.findall(r'hxxps?:\/\/[^|}]+', sanitized_decoded_traffic)
 	iocs = '\n'.join(iocs)
 	return iocs
 
-
+#main
 def main():
 
 	if len(sys.argv) is not 2:
