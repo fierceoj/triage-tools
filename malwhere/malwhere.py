@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#simple tool to analyze encoded, compressed, or obfuscated payloads and indicators
+#simple tool to analyze encoded, compressed, or obfuscated payloads
 #find concealed malicious content and IOCs
 #obtain IOCs in sanitized or desanitized format
 
