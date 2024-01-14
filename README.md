@@ -5,7 +5,7 @@ Blue Team tools for SOC triage and analysis.
 Decode hancitor C2 traffic and extract IOCs.
 
 ### ioc_rep
-Check the reputation of an IP, URL, or file hash. (Coming soon.)
+Check the reputation of an IP, URL, or file hash. (Future.)
 
 ### malwhere
 Where is the malicious content? Decode, deobfuscate, and analyze suspicious code/traffic/data. 
